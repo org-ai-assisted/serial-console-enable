@@ -1,3 +1,22 @@
+commit 86ca54033b4c7d59dff20669d5540d6569ad84f1
+Merge: 1ea94b3 dead21a
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Tue Dec 2 06:04:32 2025 -0500
+
+    Merge remote-tracking branch 'ArrayBolt3/arraybolt3/trixie'
+
+commit dead21ae1653d89bfdde4ab0907c93d6d5027f39
+Author: Aaron Rainbolt <arraybolt3@ubuntu.com>
+Date:   Mon Dec 1 21:04:36 2025 -0600
+
+    Remove gfxterm, it results in multiple conflicting GRUB menu displays under KVM
+
+commit 1ea94b3e2f7e9a385a742119161e7929131f58dd
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Fri Sep 19 16:19:15 2025 +0000
+
+    bumped changelog version
+
 commit f6ada8ce4d9250e5669cba1c7373b3f919aba904
 Author: Patrick Schleizer <adrelanos@whonix.org>
 Date:   Thu Sep 18 10:08:12 2025 -0400
