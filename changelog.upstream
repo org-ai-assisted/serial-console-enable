@@ -1,3 +1,9 @@
+commit 15161fe80ccd04b239efecad2369e00622fea76e
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Sat Mar 28 09:52:55 2026 +0000
+
+    bumped changelog version
+
 commit c2fa29faa4144953b8115c62ab96f05eea52f2f0
 Author: Patrick Schleizer <adrelanos@whonix.org>
 Date:   Sat Mar 28 05:30:45 2026 -0400
@@ -125,7 +131,7 @@ Author: Patrick Schleizer <adrelanos@whonix.org>
 Date:   Sat Nov 11 13:41:26 2023 -0500
 
     change license to AGPL-3+
-    
+
     https://forums.whonix.org/t/license-change-to-agplv3/17455
 
 commit 1fb04b1e31f6bc531f8cf31cc1ecde727157d20e
@@ -361,9 +367,9 @@ Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Fri Sep 13 05:44:16 2019 +0000
 
     enable grub serial console
-    
+
     https://forums.whonix.org/t/grub-serial-menu-in-virsh-console/8097
-    
+
     Thanks to @HulaHoopWhonix for providing these settings!
 
 commit 6ddb6a34e1e69600f134e4a91d8b4755b7ff29e1
@@ -449,13 +455,13 @@ Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Fri May 24 12:25:36 2019 -0400
 
     Enable /lib/systemd/system/getty.target.wants/serial-getty@ttyS0.service by
-    
+
     creating a symlink from:
-    
+
     /lib/systemd/system/serial-getty@.service
-    
+
     to:
-    
+
     /lib/systemd/system/getty.target.wants/serial-getty@ttyS0.service
 
 commit 1e9c1711597209922ffac7d47f18ff96716b4192
