@@ -1,3 +1,68 @@
+commit 871aa433d300184e1e8834f8ea7e5bb20fcdaf91
+Merge: b05c6d5 2ecfe21
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Thu Jul 2 02:29:13 2026 -0400
+
+    Merge remote-tracking branch 'org-ai-assisted/claude/grub-serial-only'
+
+commit 2ecfe21c247179aa6614e3dd7a2ca0d0be96a030
+Author: claude (dev22 c20093f1-1b30-4397-87b6-9586321c87df) <noreply@anthropic.com>
+Date:   Wed Jul 1 05:31:18 2026 -0400
+
+    grub: set GRUB_TERMINAL=serial unconditionally
+
+    Address review feedback: the previous else branch appended ("$GRUB_TERMINAL
+    serial"), so a pre-existing GRUB_TERMINAL (e.g. "console" from another grub.d
+    snippet) would become "console serial" -- re-creating the dual terminal this
+    change is meant to avoid. Set serial unconditionally; a user who wants a
+    different terminal can still override in the higher-numbered 50_user.cfg.
+
+    Also validated on arm64: booting the Kicksecure-CLI arm64 image in
+    qemu-system-aarch64 (AAVMF/EFI), the serial-only config shows the GRUB menu
+    over serial and is driveable, with no doubling -- same as amd64 BIOS and EFI.
+
+    Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+    Claude-Session: https://claude.ai/code/session_018bezwAzE9uxSX1xrH7okFV
+
+commit be2973cf22566da15586d85881c9161fc2be4ad6
+Author: claude (dev22 c20093f1-1b30-4397-87b6-9586321c87df) <noreply@anthropic.com>
+Date:   Wed Jul 1 05:18:56 2026 -0400
+
+    grub: use serial-only terminal so the serial console is driveable
+
+    GRUB_TERMINAL="console serial" (a dual terminal) lets GRUB render the boot
+    menu over serial but is unreliable for INPUT: GRUB then commonly accepts
+    keystrokes only from the primary (console) terminal, so over serial you can
+    view the menu but cannot drive it. Under EFI it is worse -- the firmware
+    mirrors the EFI console to the serial port, so with "console" present GRUB's
+    serial output is duplicated/garbled.
+
+    Switch to serial-only. Verified by booting a real Kicksecure-CLI amd64 image
+    in QEMU (raw), driving the GRUB menu over a serial socket, in both BIOS and
+    EFI (OVMF):
+
+      terminal_input='console serial': BIOS drive ok, EFI output DOUBLED
+      terminal_input='serial console': BIOS drive ok, EFI output DOUBLED
+      terminal_input='serial'        : BIOS drive ok, EFI CLEAN + driveable
+
+    serial-only is the only config that is clean and driveable on both firmwares.
+
+    Trade-off: the GRUB menu no longer renders on the graphical console (e.g. a
+    VirtualBox window); the kernel and getty login still appear on both consoles.
+    This package is opt-in specifically to obtain a serial console, so serial is
+    prioritised.
+
+    See: https://lists.gnu.org/archive/html/help-grub/2020-11/msg00006.html
+
+    Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+    Claude-Session: https://claude.ai/code/session_018bezwAzE9uxSX1xrH7okFV
+
+commit b05c6d509fd87727b575e469a6be1d1647e56cdd
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Wed May 20 22:20:57 2026 +0000
+
+    bumped changelog version
+
 commit ef0a206d492c1e7f407453c3f93227c7e32b50d6
 Author: Patrick Schleizer <adrelanos@whonix.org>
 Date:   Wed May 20 16:57:13 2026 -0400
